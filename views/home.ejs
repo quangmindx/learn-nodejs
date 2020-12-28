@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+    <title>Socket.io</title>
+  </head>
+  <body>
+    <input class="message" type="text" placeholder="Enter your messenge" />
+    <button onclick="sendMessgae()" id="btn">Send message</button>
+    <ul id="list-messages"></ul>
+    <script>
+      const listmMessages = document.querySelector("#list-messages");
+      const socket = io("http://localhost:3000");
+      socket.on("connection");
+
+      socket.on("message", (data) => {
+        listmMessages.insertAdjacentHTML("beforeend", `<li>${data}</li>`);
+      });
+
+      const sendMessgae = () => {
+        const messager = document.querySelector(".message").value;
+        socket.emit("message", messager);
+      };
+    </script>
+  </body>
+</html>
