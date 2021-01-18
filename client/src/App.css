@@ -1,0 +1,45 @@
+.d-flex {
+  display: flex;
+}
+
+.container {
+  padding: 0 4rem;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.f-col {
+  flex-direction: column;
+}
+
+.m-t {
+  margin-top: 2rem;
+}
+
+.p-bottom {
+  padding-bottom: 1.2rem;
+}
+
+.form-control input {
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 17px;
+  margin-top: 1rem;
+}
+
+.form-control button {
+  background-color: #1877f2;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  padding: 0 16px;
+  line-height: 48px;
+  color: white;
+}
+
+label {
+  font-size: 20px;
+}
