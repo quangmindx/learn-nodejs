@@ -9,14 +9,14 @@ function DisplayMovieList(props) {
           <div>
             <button
               className="btn btn-primary"
-              onClick={() => props.deleteMovie(movieName)}
+              onClick={() => props.deleteMovie(id)}
             >
               Delete
             </button>
             <button
               type="button"
               className="btn btn-primary ms-2"
-              onClick={() => props.updateMovie(movieName)}
+              onClick={() => props.updateMovie(id)}
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               data-bs-whatever="@mdo"

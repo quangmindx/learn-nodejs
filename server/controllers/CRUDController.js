@@ -21,8 +21,8 @@ const postMovieController = (req, res) => {
 };
 
 const deleteMovieController = (req, res) => {
-  const { movieName } = req.params;
-  db.deleteMovie(movieName)
+  const { id } = req.params;
+  db.deleteMovie(id)
     .then((result) => {
       res.send(result);
     })

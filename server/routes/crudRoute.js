@@ -10,7 +10,7 @@ const route = express.Router();
 
 route.get("/api/get", getAllMovieController);
 route.post("/api/insert", postMovieController);
-route.delete("/api/delete/:movieName", deleteMovieController);
+route.delete("/api/delete/:id", deleteMovieController);
 route.put("/api/update/:id", updateMovieController);
 
 export default route;

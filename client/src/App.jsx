@@ -36,17 +36,17 @@ function App() {
     setMovieReview("");
   };
 
-  const deleteMovie = (name) => {
-    const movieIndex = movieList.findIndex((movie) => movie.movieName === name);
+  const deleteMovie = (id) => {
+    const movieIndex = movieList.findIndex((movie) => movie.id === id);
     if (movieIndex !== -1) {
-      Axios.delete(`http://localhost:3030/api/delete/${name}`);
+      Axios.delete(`http://localhost:3030/api/delete/${id}`);
       movieList.splice(movieIndex, 1);
       setMovieList([...movieList]);
     }
   };
 
-  const updateMovie = (name) => {
-    const movieIndex = movieList.findIndex((movie) => movie.movieName === name);
+  const updateMovie = (id) => {
+    const movieIndex = movieList.findIndex((movie) => movie.id === id);
     if (movieIndex !== -1) {
       setMovieUpdate({ ...movieList[movieIndex] });
     }
