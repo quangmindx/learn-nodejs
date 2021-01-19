@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import DbService from "../models/Movie.js";
 const db = DbService.getDbServiceInstance();
 
@@ -13,8 +12,7 @@ const getAllMovieController = (req, res) => {
 };
 
 const postMovieController = (req, res) => {
-  const { movieName, movieReview } = req.body;
-  const id = uuidv4();
+  const { id, movieName, movieReview } = req.body;
   db.insertMovie(id, movieName, movieReview)
     .then((result) => res.send(result))
     .catch((err) => console.log(err));
@@ -30,8 +28,7 @@ const deleteMovieController = (req, res) => {
 };
 
 const updateMovieController = (req, res) => {
-  const { id } = req.params;
-  const { movieName, movieReview } = req.body;
+  const { id, movieName, movieReview } = req.body;
   db.updateMovie(id, movieName, movieReview)
     .then((resuls) => {
       res.send(resuls);

@@ -24,8 +24,8 @@ export default class DbService {
     return await this.runQuery(query, [id, movieName, movieReview]);
   }
 
-  async deleteMovie(movieName) {
-    const query = `DELETE FROM movie_reviews WHERE movieName = '${movieName}'`;
+  async deleteMovie(idMovie) {
+    const query = `DELETE FROM movie_reviews WHERE id = '${idMovie}'`;
     return await this.runQuery(query);
   }
   async updateMovie(id, movieName, movieReview) {

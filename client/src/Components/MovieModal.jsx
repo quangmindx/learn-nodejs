@@ -26,7 +26,8 @@ function MovieModal(props) {
     movieUpdate.movieName = newMovieName;
     movieUpdate.movieReview = newMovieReview;
     props.setMovieList([...props.movieList]);
-    Axios.put(`http://localhost:3030/api/update/${id}`, {
+    Axios.put(`http://localhost:3030/api/update`, {
+      id,
       movieName: newMovieName,
       movieReview: newMovieReview,
     });
@@ -44,7 +45,7 @@ function MovieModal(props) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              New message
+              New Update
             </h5>
             <button
               type="button"
@@ -96,7 +97,7 @@ function MovieModal(props) {
               data-bs-dismiss="modal"
               onClick={handleUpdate}
             >
-              Send message
+              Save
             </button>
           </div>
         </div>

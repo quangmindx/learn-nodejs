@@ -3,6 +3,8 @@ import { React, useState, useEffect } from "react";
 import Axios from "axios";
 import DisplayMovieList from "./Components/DisplayMovieList";
 import MovieModal from "./Components/MovieModal";
+import { v4 as uuidv4 } from "uuid";
+
 function App() {
   const [movieName, setMovieName] = useState("");
   const [movieReview, setMovieReview] = useState("");
@@ -26,12 +28,13 @@ function App() {
   };
 
   const handleSubmit = () => {
-    Axios.post("http://localhost:3030/api/insert", { movieName, movieReview })
-      .then(() => {
-        console.log("Done");
-      })
-      .catch((err) => console.log(err));
-    setMovieList([...movieList, { movieName, movieReview }]);
+    const id = uuidv4();
+    Axios.post("http://localhost:3030/api/insert", {
+      id,
+      movieName,
+      movieReview,
+    });
+    setMovieList([...movieList, { id, movieName, movieReview }]);
     setMovieName("");
     setMovieReview("");
   };
