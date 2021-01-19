@@ -16,21 +16,20 @@ export default class DbService {
   }
   async getAllMovie() {
     const query = `SELECT * FROM movie_reviews;`;
-    const response = await this.runQuery(query);
-    return response;
+    return await this.runQuery(query);
   }
 
   async insertMovie(id, movieName, movieReview) {
     const query = `INSERT INTO movie_reviews (id, movieName, movieReview) VALUES (?, ?, ?);`;
-    const response = await this.runQuery(query, [id, movieName, movieReview]);
-    return response;
+    return await this.runQuery(query, [id, movieName, movieReview]);
   }
 
   async deleteMovie(movieName) {
     const query = `DELETE FROM movie_reviews WHERE movieName = '${movieName}'`;
-    const response = await this.runQuery(query);
-    return response;
+    return await this.runQuery(query);
   }
-
-  // async updateMovie()
+  async updateMovie(id, movieName, movieReview) {
+    const query = `UPDATE movie_reviews SET movieName= ?, movieReview= ? WHERE id= ? `;
+    return await this.runQuery(query, [movieName, movieReview, id]);
+  }
 }

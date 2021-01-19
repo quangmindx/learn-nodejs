@@ -2,12 +2,12 @@ import "./App.css";
 import { React, useState, useEffect } from "react";
 import Axios from "axios";
 import DisplayMovieList from "./Components/DisplayMovieList";
-
+import MovieModal from "./Components/MovieModal";
 function App() {
   const [movieName, setMovieName] = useState("");
   const [movieReview, setMovieReview] = useState("");
   const [movieList, setMovieList] = useState([]);
-  // const [isUpdate, setIsUpdate] = useState(false);
+  const [movieUpdate, setMovieUpdate] = useState({});
 
   useEffect(() => {
     Axios.get("http://localhost:3030/api/get")
@@ -48,20 +48,18 @@ function App() {
   const updateMovie = (name) => {
     const movieIndex = movieList.findIndex((movie) => movie.movieName === name);
     if (movieIndex !== -1) {
-      Axios.put(`http://localhost:3030/api/update/${name}`);
-      // movieList.splice(movieIndex, 1);
-      // setMovieList([...movieList]);
+      setMovieUpdate({ ...movieList[movieIndex] });
     }
   };
 
   return (
-    <div className="App">
-      <div className="container d-flex j-center m-t">
+    <div className="App py-4">
+      <div className="container d-flex j-center">
         <div className="form-container">
           <h1>CRUD APPLICATION</h1>
           <div className="form">
-            <div className="form-control d-flex f-col m-t">
-              <label>Movie Name</label>
+            <div className="form-control d-flex f-col">
+              <label className="form-label">Movie Name</label>
               <input
                 type="text"
                 name="name-movie"
@@ -70,8 +68,8 @@ function App() {
                 value={movieName}
               />
             </div>
-            <div className="form-control d-flex f-col m-t">
-              <label>Review</label>
+            <div className="form-control d-flex f-col">
+              <label className="form-label">Review</label>
               <input
                 type="text"
                 name="review"
@@ -81,8 +79,10 @@ function App() {
               />
             </div>
 
-            <div className="form-control m-t">
-              <button onClick={handleSubmit}>Submit</button>
+            <div className="form-control">
+              <button className="btn btn-primary" onClick={handleSubmit}>
+                Submit
+              </button>
             </div>
           </div>
         </div>
@@ -92,6 +92,11 @@ function App() {
           movieList={movieList}
           deleteMovie={deleteMovie}
           updateMovie={updateMovie}
+        />
+        <MovieModal
+          movieUpdate={movieUpdate}
+          movieList={movieList}
+          setMovieList={setMovieList}
         />
       </div>
     </div>
